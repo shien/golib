@@ -1,10 +1,18 @@
-# Use to write log file
+# My golang library
 
-# Log format
+- read / write config file.
+- logwriter.
 
-## application.log
+## load config file
+
+
+## Use to write log file
+
+### Log format
+
+### application.log
 [yyyy:MM:dd] [log level] log text.
 
 
-## alert log
+### alert log
 [yyyy:MM:dd] [alert] log text.
