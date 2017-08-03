@@ -1,7 +1,8 @@
-package main
+package logwriter
 
 import (
 	"fmt"
+	"github.com/BurntSushi/toml"
 	"log"
 	"os"
 	"time"
@@ -21,7 +22,7 @@ type LogConf struct {
 
 func main() {
 
-	conf := LogConf{LogDirectory: "/tmp/", LogLevel: "info", Rotate: "dayly"}
+	conf := LogConf{LogDirectory: "/tmp/", LogLevel: "info", Rotate: "daily"}
 	content := LogContent{LogType: "application", LogLevel: "info", Log: "test"}
 
 	writeLog(conf, content)
