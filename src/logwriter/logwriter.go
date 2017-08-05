@@ -2,7 +2,6 @@ package logwriter
 
 import (
 	"fmt"
-	"github.com/BurntSushi/toml"
 	"log"
 	"os"
 	"time"
@@ -20,16 +19,16 @@ type LogConf struct {
 	Rotate       string
 }
 
-func main() {
+func WriteLog(conf LogConf, content LogContent) bool {
 
-	conf := LogConf{LogDirectory: "/tmp/", LogLevel: "info", Rotate: "daily"}
-	content := LogContent{LogType: "application", LogLevel: "info", Log: "test"}
+	c := make(chan bool)
+	go writeLog1(conf, content)
+	defer close(c)
 
-	writeLog(conf, content)
-
+	return true
 }
 
-func writeLog(conf LogConf, content LogContent) bool {
+func writeLog1(conf LogConf, content LogContent) bool {
 
 	time := time.Now()
 	today := fmt.Sprintf("%04d%02d%02d", time.Year(), time.Month(), time.Day())
